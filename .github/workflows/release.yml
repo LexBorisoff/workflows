@@ -1,4 +1,4 @@
-name: Publish
+name: Release
 
 on:
   workflow_call:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   release:
-    name: Publish
+    name: Release
     runs-on: ubuntu-latest
 
     permissions:
@@ -32,7 +32,7 @@ jobs:
       - name: Build the application
         run: npm run build
 
-      - name: Publish
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
