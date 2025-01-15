@@ -4,8 +4,10 @@ on:
   workflow_call:
     inputs:
       name:
-        description: "Added to CI Results job name in parenthesis, e.g. CI Results (Push)"
+        description: "Job name to use instead of CI Results"
+        required: false
         type: string
+        default: "CI Results"
       ci-result:
         description: "Result of the CI job"
         required: true
@@ -13,7 +15,7 @@ on:
 
 jobs:
   results:
-    name: ${{ inputs.name && format('CI Results ({})', inputs.name) || 'CI Results' }}
+    name: ${{ inputs.name }}
     runs-on: ubuntu-latest
 
     steps:
