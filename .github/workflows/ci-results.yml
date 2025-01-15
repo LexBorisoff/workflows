@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           result="${{ inputs.ci-result }}"
-          if [[ $result == "success" || $result == "skipped" ]]; then
+          if [[ $result == "success" ]]; then
             exit 0
           else
             exit 1
