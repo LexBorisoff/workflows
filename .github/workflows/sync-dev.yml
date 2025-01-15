@@ -9,7 +9,7 @@ on:
 
 jobs:
   sync-dev:
-    name: Sync Dev
+    name: Sync main to dev
     runs-on: ubuntu-latest
 
     permissions:
