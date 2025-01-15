@@ -1,0 +1,22 @@
+name: CI Results
+
+on:
+  workflow_call:
+    inputs:
+      ci-result:
+        description: "Result of the CI job"
+        required: true
+        type: string
+
+jobs:
+  results:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          result="${{ inputs.ci-result }}"
+          if [[ $result == "success" || $result == "skipped" ]]; then
+            exit 0
+          else
+            exit 1
+          fi
