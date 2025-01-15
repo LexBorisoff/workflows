@@ -10,6 +10,7 @@ on:
 
 jobs:
   results:
+    name: CI Results
     runs-on: ubuntu-latest
 
     steps:
