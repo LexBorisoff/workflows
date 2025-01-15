@@ -1,0 +1,39 @@
+name: Publish
+
+on:
+  workflow_call:
+    secrets:
+      NPM_TOKEN:
+        description: "NPM token for publishing"
+        required: true
+
+jobs:
+  release:
+    name: Publish
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Install dependencies
+        run: npm clean-install
+
+      - name: Verify the integrity of provenance attestations and registry signatures
+        run: npm audit signatures
+
+      - name: Build the application
+        run: npm run build
+
+      - name: Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
