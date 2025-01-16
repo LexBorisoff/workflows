@@ -12,9 +12,6 @@ jobs:
     name: Sync main to dev
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout dev
         uses: actions/checkout@v4
