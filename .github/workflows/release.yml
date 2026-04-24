@@ -2,9 +2,6 @@ name: Release
 
 on: workflow_call
 
-permissions:
-  contents: read # for checkout
-
 jobs:
   release:
     name: Release
