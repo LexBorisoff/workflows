@@ -10,12 +10,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      id-token: write # enable use of OIDC for trusted publishing and npm provenance
-
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
